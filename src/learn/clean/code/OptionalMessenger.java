@@ -9,8 +9,8 @@ public class OptionalMessenger {
     this.messenger = messenger;
   }
 
-  public static OptionalMessenger of(Messenger painter) {
-    return new OptionalMessenger(Optional.of(painter));
+  public static OptionalMessenger of(Messenger messenger) {
+    return new OptionalMessenger(Optional.of(messenger));
   }
 
   public static OptionalMessenger empty() {
