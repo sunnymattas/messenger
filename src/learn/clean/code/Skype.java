@@ -1,6 +1,6 @@
 package learn.clean.code;
 
-public class Skype implements Messenger {
+public class Skype implements Action, Rule {
 
   @Override
   public void send(final String message) {
@@ -8,8 +8,10 @@ public class Skype implements Messenger {
   }
 
   @Override
-  public boolean matches(final String type, final String message) {
-    return getType().equalsIgnoreCase(type) && isValid(message);
+  public OptionalMessenger matches(final String type, final String message) {
+    return getType().equalsIgnoreCase(type) && isValid(message)
+        ? OptionalMessenger.of(this)
+        : OptionalMessenger.empty();
   }
 
   @Override

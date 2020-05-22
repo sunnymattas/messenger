@@ -1,10 +1,12 @@
 package learn.clean.code;
 
-public class Hangout implements Messenger {
+public class Hangout implements Action, Rule {
 
   @Override
-  public boolean matches(final String type, final String message) {
-    return getType().equalsIgnoreCase(type) && isValidForHangout(message);
+  public OptionalMessenger matches(final String type, final String message) {
+    return getType().equalsIgnoreCase(type) && isValidForHangout(message)
+        ? OptionalMessenger.of(this)
+        : OptionalMessenger.empty();
   }
 
   @Override

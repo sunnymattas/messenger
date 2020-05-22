@@ -3,13 +3,13 @@ package learn.clean.code;
 import java.util.Optional;
 
 public class OptionalMessenger {
-  private final Optional<Messenger> messenger;
+  private final Optional<Action> messenger;
 
-  private OptionalMessenger(Optional<Messenger> messenger) {
+  private OptionalMessenger(Optional<Action> messenger) {
     this.messenger = messenger;
   }
 
-  public static OptionalMessenger of(Messenger messenger) {
+  public static OptionalMessenger of(Action messenger) {
     return new OptionalMessenger(Optional.of(messenger));
   }
 
@@ -17,7 +17,7 @@ public class OptionalMessenger {
     return new OptionalMessenger(Optional.empty());
   }
 
-  public Optional<Messenger> asOptional() {
+  public Optional<Action> asOptional() {
     return this.messenger;
   }
 
@@ -29,5 +29,9 @@ public class OptionalMessenger {
                     String.format(
                         "Your message has invalid text or messenger '%s' not supported.", type)))
         .send(message);
+  }
+
+  public boolean isPresent() {
+    return messenger.isPresent();
   }
 }

@@ -1,6 +1,6 @@
 package learn.clean.code;
 
-public class Slack implements Messenger {
+public class Slack implements Action, Rule {
 
   @Override
   public void send(final String message) {
@@ -10,8 +10,10 @@ public class Slack implements Messenger {
   }
 
   @Override
-  public boolean matches(final String type, final String message) {
-    return getType().equalsIgnoreCase(type) && isValid(message);
+  public OptionalMessenger matches(final String type, final String message) {
+    return getType().equalsIgnoreCase(type) && isValid(message)
+        ? OptionalMessenger.of(this)
+        : OptionalMessenger.empty();
   }
 
   @Override

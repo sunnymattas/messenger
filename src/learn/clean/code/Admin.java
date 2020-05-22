@@ -2,11 +2,13 @@ package learn.clean.code;
 
 import java.util.List;
 
-public class Admin implements Messenger {
+public class Admin implements Rule, Action {
 
   @Override
-  public boolean matches(final String type, final String message) {
-    return getType().equalsIgnoreCase(type) && isValid(message);
+  public OptionalMessenger matches(final String type, final String message) {
+    return getType().equalsIgnoreCase(type) && isValid(message)
+        ? OptionalMessenger.of(this)
+        : OptionalMessenger.empty();
   }
 
   @Override
@@ -15,16 +17,16 @@ public class Admin implements Messenger {
   }
 
   private boolean isValid(final String message) {
-    return geMessengers().stream()
-        .allMatch(messenger -> messenger.matches(messenger.getType(), message));
+    return geMessengers()
+        .allMatch(messenger -> messenger.matches(messenger.getType(), message).isPresent());
   }
 
   @Override
   public void send(final String message) {
-    geMessengers().forEach(messenger -> messenger.send(message));
+    List.of(new Slack(), new Skype()).forEach(messenger -> messenger.send(message));
   }
 
-  List<Messenger> geMessengers() {
-    return List.of(new Slack(), new Skype());
+  private Messengers geMessengers() {
+    return new Messengers(List.of(new Slack(), new Skype()));
   }
 }

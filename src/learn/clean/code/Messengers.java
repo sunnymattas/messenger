@@ -3,22 +3,27 @@ package learn.clean.code;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Messengers implements ForwardingStream<Messenger> {
-  private final List<Messenger> messengerList;
+public class Messengers implements ForwardingStream<Rule> {
+  private final List<Rule> messengerList;
 
-  public Messengers(List<Messenger> messengers) {
+  public Messengers(List<Rule> messengers) {
     this.messengerList = messengers;
   }
 
   @Override
-  public Stream<Messenger> getStream() {
+  public Stream<Rule> getStream() {
     return this.messengerList.stream();
   }
 
   public OptionalMessenger findMatchingMessenger(String type, String message) {
-    return filter(messenger -> messenger.matches(type, message))
+    return map(messenger -> getMatches(type, message, messenger))
+        .filter(OptionalMessenger::isPresent)
         .findFirst()
-        .map(OptionalMessenger::of)
         .orElse(OptionalMessenger.empty());
+  }
+
+  private OptionalMessenger getMatches(
+      final String type, final String message, final Rule messenger) {
+    return messenger.matches(type, message);
   }
 }
