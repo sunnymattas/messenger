@@ -4,7 +4,12 @@ public class Hangout implements Messenger {
 
   @Override
   public boolean matches(final String type, final String message) {
-    return "hangout".equalsIgnoreCase(type) && isValidForHangout(message);
+    return getType().equalsIgnoreCase(type) && isValidForHangout(message);
+  }
+
+  @Override
+  public String getType() {
+    return "hangout";
   }
 
   private boolean isValidForHangout(final String message) {

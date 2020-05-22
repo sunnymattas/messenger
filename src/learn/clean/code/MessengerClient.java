@@ -20,6 +20,6 @@ public class MessengerClient {
   }
 
   private static List<Messenger> getMessengers() {
-    return List.of(new Slack(), new Skype(), new Hangout());
+    return List.of(new Admin(), new Slack(), new Skype(), new Hangout());
   }
 }

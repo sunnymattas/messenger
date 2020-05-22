@@ -10,9 +10,15 @@ public class MessengerClientTest {
     MessengerClient.main(input);
   }
 
-  @Test
+  @Test(expected = MessageSendFailed.class)
   public void invalidMessenger() {
     String[] input = {"invalid", "sample message"};
+    MessengerClient.main(input);
+  }
+
+  @Test
+  public void adminMessenger() {
+    String[] input = {"admin", "sample message"};
     MessengerClient.main(input);
   }
 }
