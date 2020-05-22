@@ -2,8 +2,6 @@ package learn.clean.code;
 
 public class Slack implements Messenger {
 
-  public Messenger
-
   @Override
   public void send(final String message) {
     if (isValidForSlack(message)) {
