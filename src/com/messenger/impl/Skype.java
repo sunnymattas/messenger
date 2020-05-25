@@ -1,12 +1,10 @@
-package learn.clean.code;
+package com.messenger.impl;
 
-public class Slack implements Action, Rule {
+public class Skype implements Action, Rule {
 
   @Override
   public void send(final String message) {
-    if (isValid(message)) {
-      System.out.println("Sending message to Slack");
-    }
+    System.out.println("Sending message to Skype");
   }
 
   @Override
@@ -18,10 +16,10 @@ public class Slack implements Action, Rule {
 
   @Override
   public String getType() {
-    return "slack";
+    return "skype";
   }
 
   private boolean isValid(final String message) {
-    return message != null && !message.isBlank();
+    return message != null && !message.isBlank() && !message.contains("<");
   }
 }

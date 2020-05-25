@@ -1,5 +1,6 @@
-package learn.clean.code;
+package com.messenger.impl;
 
+import com.messenger.impl.exception.MessageSendFailed;
 import java.util.Optional;
 
 public class OptionalMessenger {

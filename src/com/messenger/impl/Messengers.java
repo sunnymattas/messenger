@@ -1,5 +1,6 @@
-package learn.clean.code;
+package com.messenger.impl;
 
+import com.messenger.util.ForwardingStream;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -16,14 +17,9 @@ public class Messengers implements ForwardingStream<Rule> {
   }
 
   public OptionalMessenger findMatchingMessenger(String type, String message) {
-    return map(messenger -> getMatches(type, message, messenger))
+    return map(messenger -> messenger.matches(type, message))
         .filter(OptionalMessenger::isPresent)
         .findFirst()
         .orElse(OptionalMessenger.empty());
-  }
-
-  private OptionalMessenger getMatches(
-      final String type, final String message, final Rule messenger) {
-    return messenger.matches(type, message);
   }
 }

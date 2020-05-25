@@ -1,4 +1,4 @@
-package learn.clean.code;
+package com.messenger.impl;
 
 public class Hangout implements Action, Rule {
 

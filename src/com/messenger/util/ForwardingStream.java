@@ -1,4 +1,4 @@
-package learn.clean.code;
+package com.messenger.util;
 
 import java.util.Comparator;
 import java.util.Iterator;
