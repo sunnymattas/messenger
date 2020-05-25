@@ -1,6 +1,11 @@
 package com.messenger.impl;
 
 public class Hangout implements Action, Rule {
+  private final HangoutClient hangoutClient;
+
+  public Hangout(final HangoutClient hangoutClient) {
+    this.hangoutClient = hangoutClient;
+  }
 
   @Override
   public OptionalMessenger matches(final String type, final String message) {
@@ -20,6 +25,6 @@ public class Hangout implements Action, Rule {
 
   @Override
   public void send(final String message) {
-    System.out.println("Sending message to Hangout");
+    hangoutClient.send(message);
   }
 }

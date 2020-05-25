@@ -1,10 +1,15 @@
 package com.messenger.impl;
 
 public class Skype implements Action, Rule {
+  private final SkypeClient skypeClient;
+
+  public Skype(final SkypeClient skypeClient) {
+    this.skypeClient = skypeClient;
+  }
 
   @Override
   public void send(final String message) {
-    System.out.println("Sending message to Skype");
+    skypeClient.send(message);
   }
 
   @Override

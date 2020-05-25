@@ -1,11 +1,16 @@
 package com.messenger.impl;
 
 public class Slack implements Action, Rule {
+  private final SlackClient slackClient;
+
+  public Slack(final SlackClient slackClient) {
+    this.slackClient = slackClient;
+  }
 
   @Override
   public void send(final String message) {
     if (isValid(message)) {
-      System.out.println("Sending message to Slack");
+      slackClient.send(message);
     }
   }
 
