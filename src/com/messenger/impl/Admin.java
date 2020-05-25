@@ -1,5 +1,7 @@
 package com.messenger.impl;
 
+import com.messenger.impl.client.SkypeClient;
+import com.messenger.impl.client.SlackClient;
 import java.util.List;
 
 public class Admin implements Rule, Action {

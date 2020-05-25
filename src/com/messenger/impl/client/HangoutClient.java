@@ -1,4 +1,4 @@
-package com.messenger.impl;
+package com.messenger.impl.client;
 
 public class HangoutClient {
   public void send(final String message) {

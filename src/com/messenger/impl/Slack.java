@@ -1,5 +1,7 @@
 package com.messenger.impl;
 
+import com.messenger.impl.client.SlackClient;
+
 public class Slack implements Action, Rule {
   private final SlackClient slackClient;
 

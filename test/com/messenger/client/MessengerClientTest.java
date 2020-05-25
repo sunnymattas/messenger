@@ -4,12 +4,12 @@ import static org.mockito.Mockito.verify;
 
 import com.messenger.impl.Admin;
 import com.messenger.impl.Hangout;
-import com.messenger.impl.HangoutClient;
+import com.messenger.impl.client.HangoutClient;
 import com.messenger.impl.Rule;
 import com.messenger.impl.Skype;
-import com.messenger.impl.SkypeClient;
+import com.messenger.impl.client.SkypeClient;
 import com.messenger.impl.Slack;
-import com.messenger.impl.SlackClient;
+import com.messenger.impl.client.SlackClient;
 import com.messenger.impl.exception.MessageSendFailed;
 import java.util.List;
 import org.junit.Test;

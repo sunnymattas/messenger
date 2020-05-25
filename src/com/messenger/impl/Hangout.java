@@ -1,5 +1,7 @@
 package com.messenger.impl;
 
+import com.messenger.impl.client.HangoutClient;
+
 public class Hangout implements Action, Rule {
   private final HangoutClient hangoutClient;
 
